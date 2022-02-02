@@ -32,6 +32,7 @@ if [[ -z "$SLUG" ]]; then
 fi
 echo "ℹ︎ SLUG is $SLUG"
 
+
 MAINFILE="$SLUG.php"
 
 # Check version in readme.txt is the same as plugin file
