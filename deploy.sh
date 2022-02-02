@@ -55,8 +55,7 @@ git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 # Check if current version exists as tag
-
-if [[ $(git ls-remote --refs --tags -q | grep "tags/${VERSION}") ]]; then
+if [[ $(git ls-remote --refs --tags -q | grep "refs/tags/${VERSION}") ]]; then
     echo "Version ${VERSION} exists"
 else
     echo "Version ${VERSION} does not exist"
@@ -64,17 +63,6 @@ else
     git remote set-url origin "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
     git push --force origin "${VERSION}"
 fi
-
-echo "OK"
-
-git tag -l
-
-git ls-remote --refs --tags -q | grep "tags/${VERSION}"
-
-
-ls -a
-
-exit 1
 
 if [[ -z "$ASSETS_DIR" ]]; then
 	ASSETS_DIR=".wordpress-org"
