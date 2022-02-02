@@ -95,9 +95,6 @@ else
 	TMP_DIR="${HOME}/archivetmp"
 	mkdir "$TMP_DIR"
 
-	git config --global user.email "10upbot+github@10up.com"
-	git config --global user.name "10upbot on GitHub"
-
 	# If there's no .gitattributes file, write a default one into place
 	if [[ ! -e "$GITHUB_WORKSPACE/.gitattributes" ]]; then
 		cat > "$GITHUB_WORKSPACE/.gitattributes" <<-EOL
@@ -105,6 +102,7 @@ else
 		/.gitattributes export-ignore
 		/.gitignore export-ignore
 		/.github export-ignore
+		/.wordpress.org export-ignore
 		EOL
 
 		# Ensure we are in the $GITHUB_WORKSPACE directory, just in case
