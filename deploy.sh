@@ -51,6 +51,9 @@ fi
 
 echo "ℹ︎ VERSION is $VERSION"
 
+
+exit 1
+
 if [[ -z "$ASSETS_DIR" ]]; then
 	ASSETS_DIR=".wordpress-org"
 fi
