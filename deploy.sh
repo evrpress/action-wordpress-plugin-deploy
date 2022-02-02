@@ -53,6 +53,9 @@ echo "ℹ︎ VERSION is $VERSION"
 
 git status
 
+git config user.name "${GITHUB_ACTOR}"
+git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
 # Check if current version exists as tag
 
 if [ $(git tag -l "${VERSION}") ]; then
@@ -60,6 +63,8 @@ if [ $(git tag -l "${VERSION}") ]; then
 else
     echo "no"
     git tag -fa "${VERSION}" -m "added tag for ${VERSION}"
+    git remote set-url origin "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+    git push --force origin "${VERSION}"
 fi
 
 VERSION="1.7.1"
