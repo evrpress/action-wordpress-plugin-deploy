@@ -51,10 +51,6 @@ fi
 
 echo "ℹ︎ VERSION is $VERSION"
 
-git status
-
-git tag -l
-
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
@@ -75,12 +71,6 @@ git tag -l
 
 git ls-remote --refs --tags -q | grep "tags/${VERSION}"
 
-
-if [ $(git tag -l "${VERSION}") ]; then
-    echo "Version ${VERSION} exists"
-else
-    echo "Version ${VERSION} does not exist"
-fi
 
 ls -a
 
