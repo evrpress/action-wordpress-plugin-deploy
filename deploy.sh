@@ -53,6 +53,8 @@ echo "ℹ︎ VERSION is $VERSION"
 
 git status
 
+git tag -l
+
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
