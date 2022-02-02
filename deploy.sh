@@ -6,6 +6,7 @@
 # it does not exit with a 0, and I only care about the final exit.
 set -eo
 
+echo "Hello my Friend!"
 # Ensure SVN username and password are set
 # IMPORTANT: while secrets are encrypted and not viewable in the GitHub UI,
 # they are by necessity provided as plaintext in the context of the Action,
