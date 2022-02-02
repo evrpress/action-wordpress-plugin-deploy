@@ -39,11 +39,11 @@ echo "ℹ︎ VERSION is $VERSION"
 ls
 
 # Check version in readme.txt is the same as plugin file
-NEWVERSION1=`grep "^Stable tag" $GITHUB_REPOSITORY/readme.txt | awk -F' ' '{print $3}' | tr -d '\r'`
+NEWVERSION1=`grep "^Stable tag" readme.txt | awk -F' ' '{print $3}' | tr -d '\r'`
 echo "ℹ︎ Readme version: $NEWVERSION1"
-NEWVERSION2=`grep "Version" $GITHUB_REPOSITORY/$MAINFILE | awk -F' ' '{print $2}' | tr -d '\r\n('`
+NEWVERSION2=`grep "Version" $MAINFILE | awk -F' ' '{print $2}' | tr -d '\r\n('`
 if [ -z "$NEWVERSION2" ]; then
-	NEWVERSION2=`grep "Version" $GITHUB_REPOSITORY/$MAINFILE | awk -F' ' '{print $3}' | tr -d '\r'`
+	NEWVERSION2=`grep "Version" $MAINFILE | awk -F' ' '{print $3}' | tr -d '\r'`
 fi
 echo "ℹ︎ New Version: $NEWVERSION1"
 
