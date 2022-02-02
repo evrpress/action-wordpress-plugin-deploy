@@ -130,6 +130,9 @@ else
 	echo "ℹ︎ No assets directory found; skipping asset copy"
 fi
 
+echo "➤ Update..."
+svn update
+
 # Add everything and commit to SVN
 # The force flag ensures we recurse into subdirectories even if they are already added
 # Suppress stdout in favor of svn status later for readability
@@ -166,8 +169,7 @@ svn status
 
 ls -a /home/runner/svn-mailster-repermission
 
-echo "➤ Update..."
-svn update
+
 
 echo "➤ Committing files..."
 svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
