@@ -60,7 +60,7 @@ git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 # Check if current version exists as tag
 
-if [ $(git tag -l "${VERSION}") ]; then
+if [ $(git ls-remote --refs --tags -q | grep " ${VERSION}") ]; then
     echo "Version ${VERSION} exists"
 else
     echo "Version ${VERSION} does not exist"
