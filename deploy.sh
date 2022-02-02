@@ -27,7 +27,7 @@ if [[ -z "$SLUG" ]]; then
 fi
 echo "ℹ︎ SLUG is $SLUG"
 
-MAINFILE="$PLUGINSLUG.php"
+MAINFILE="$SLUG.php"
 
 # Does it even make sense for VERSION to be editable in a workflow definition?
 if [[ -z "$VERSION" ]]; then
@@ -36,14 +36,16 @@ if [[ -z "$VERSION" ]]; then
 fi
 echo "ℹ︎ VERSION is $VERSION"
 
+ls
+
 # Check version in readme.txt is the same as plugin file
 NEWVERSION1=`grep "^Stable tag" $GITHUB_REPOSITORY/readme.txt | awk -F' ' '{print $3}' | tr -d '\r'`
-echo "Readme version: $NEWVERSION1"
+echo "ℹ︎ Readme version: $NEWVERSION1"
 NEWVERSION2=`grep "Version" $GITHUB_REPOSITORY/$MAINFILE | awk -F' ' '{print $2}' | tr -d '\r\n('`
 if [ -z "$NEWVERSION2" ]; then
 	NEWVERSION2=`grep "Version" $GITHUB_REPOSITORY/$MAINFILE | awk -F' ' '{print $3}' | tr -d '\r'`
 fi
-echo "New Version: $NEWVERSION1"
+echo "ℹ︎ New Version: $NEWVERSION1"
 
 if [[ -z "$ASSETS_DIR" ]]; then
 	ASSETS_DIR=".wordpress-org"
