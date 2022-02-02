@@ -130,8 +130,6 @@ else
 	echo "ℹ︎ No assets directory found; skipping asset copy"
 fi
 
-echo "➤ Update..."
-svn update
 
 # Add everything and commit to SVN
 # The force flag ensures we recurse into subdirectories even if they are already added
