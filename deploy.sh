@@ -67,6 +67,14 @@ else
     git push origin "${VERSION}"
 fi
 
+echo "OK"
+
+if [ $(git tag -l "${VERSION}") ]; then
+    echo "Version ${VERSION} exists"
+else
+    echo "Version ${VERSION} does not exist"
+fi
+
 ls -a
 
 exit 1
