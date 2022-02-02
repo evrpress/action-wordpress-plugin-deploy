@@ -124,26 +124,16 @@ fi
 # Copy dotorg assets to /assets
 if [[ -d "$GITHUB_WORKSPACE/$ASSETS_DIR/" ]]; then
 
-	echo
-
-	ls -a $GITHUB_WORKSPACE/$ASSETS_DIR
 	echo "➤ Preparing assets..."
 	convert -resize 1544x500 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png $GITHUB_WORKSPACE/$ASSETS_DIR/banner-1544x500.png
 	convert -resize 772x250 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png $GITHUB_WORKSPACE/$ASSETS_DIR/banner-772x250.png
 	convert -resize 256x256 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png $GITHUB_WORKSPACE/$ASSETS_DIR/icon-256x256.png
 	convert -resize 128x128 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png $GITHUB_WORKSPACE/$ASSETS_DIR/icon-128x128.png
 
-	ls -a $GITHUB_WORKSPACE/$ASSETS_DIR
-
 	rsync -rc "$GITHUB_WORKSPACE/$ASSETS_DIR/" assets/ --delete
 else
 	echo "ℹ︎ No assets directory found; skipping asset copy"
 fi
-
-ls -a /home/runner/svn-mailster-repermission/trunk
-
-exit
-
 
 # Add everything and commit to SVN
 # The force flag ensures we recurse into subdirectories even if they are already added
