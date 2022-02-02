@@ -59,6 +59,15 @@ else
     echo "no"
 fi
 
+VERSION="1.7.1"
+echo "ℹ︎ VERSION is $VERSION"
+
+if [ $(git tag -l "$VERSION") ]; then
+    echo "yes"
+else
+    echo "no"
+fi
+
 ls -a
 
 exit 1
