@@ -118,6 +118,8 @@ else
 
 	cd "$SVN_DIR"
 
+	ls -a $TMP_DIR
+
 	# Copy from clean copy to /trunk, excluding dotorg assets
 	# The --delete flag will delete anything in destination that no longer exists in source
 	rsync -rc "$TMP_DIR/" trunk/ --delete --delete-excluded
