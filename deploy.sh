@@ -165,7 +165,7 @@ fi
 svn status
 
 cd /home/runner/svn-mailster-repermission
-ls no-auth-cache
+ls -a
 exit 1
 
 echo "➤ Committing files..."
