@@ -51,6 +51,11 @@ fi
 
 echo "ℹ︎ VERSION is $VERSION"
 
+# Check if current version exists as tag
+
+if [[git rev-list $VERSION.. >/dev/null ]]; then
+	echo "ℹ︎ VERSION $VERSION missing"
+fi
 
 ls -a
 
