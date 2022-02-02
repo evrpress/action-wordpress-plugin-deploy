@@ -166,6 +166,8 @@ svn status
 
 ls -a /home/runner/svn-mailster-repermission
 
+echo "➤ Update..."
+svn update
 
 echo "➤ Committing files..."
 svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
