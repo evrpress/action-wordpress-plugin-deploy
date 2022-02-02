@@ -102,7 +102,6 @@ else
 		/.gitattributes export-ignore
 		/.gitignore export-ignore
 		/.github export-ignore
-		/.wordpress.org export-ignore
 		EOL
 
 		# Ensure we are in the $GITHUB_WORKSPACE directory, just in case
@@ -116,7 +115,6 @@ else
 
 	cd "$SVN_DIR"
 
-	ls -a $TMP_DIR
 
 	# Copy from clean copy to /trunk, excluding dotorg assets
 	# The --delete flag will delete anything in destination that no longer exists in source
@@ -125,6 +123,17 @@ fi
 
 # Copy dotorg assets to /assets
 if [[ -d "$GITHUB_WORKSPACE/$ASSETS_DIR/" ]]; then
+
+	echo
+	echo ".........................................."
+	echo "Preparing assets"
+	sips -Z 1544 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png --out $GITHUB_WORKSPACE/$ASSETS_DIR/banner-1544x500.png
+	sips -Z 772 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png --out $GITHUB_WORKSPACE/$ASSETS_DIR/banner-772x250.png
+	sips -Z 256 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png --out $GITHUB_WORKSPACE/$ASSETS_DIR/icon-256x256.png
+	sips -Z 128 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png --out $GITHUB_WORKSPACE/$ASSETS_DIR/icon-128x128.png
+
+	ls -a $GITHUB_WORKSPACE/$ASSETS_DIR
+
 	rsync -rc "$GITHUB_WORKSPACE/$ASSETS_DIR/" assets/ --delete
 else
 	echo "ℹ︎ No assets directory found; skipping asset copy"
