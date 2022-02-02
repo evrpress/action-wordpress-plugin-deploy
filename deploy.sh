@@ -127,10 +127,10 @@ if [[ -d "$GITHUB_WORKSPACE/$ASSETS_DIR/" ]]; then
 	echo
 	echo ".........................................."
 	echo "Preparing assets"
-	sips -Z 1544 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png --out $GITHUB_WORKSPACE/$ASSETS_DIR/banner-1544x500.png
-	sips -Z 772 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png --out $GITHUB_WORKSPACE/$ASSETS_DIR/banner-772x250.png
-	sips -Z 256 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png --out $GITHUB_WORKSPACE/$ASSETS_DIR/icon-256x256.png
-	sips -Z 128 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png --out $GITHUB_WORKSPACE/$ASSETS_DIR/icon-128x128.png
+	convert -resize 1544x500 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png $GITHUB_WORKSPACE/$ASSETS_DIR/banner-1544x500.png
+	convert -resize 772x250 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png $GITHUB_WORKSPACE/$ASSETS_DIR/banner-772x250.png
+	convert -resize 256x256 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png $GITHUB_WORKSPACE/$ASSETS_DIR/icon-256x256.png
+	convert -resize 128x128 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png $GITHUB_WORKSPACE/$ASSETS_DIR/icon-128x128.png
 
 	ls -a $GITHUB_WORKSPACE/$ASSETS_DIR
 
