@@ -73,6 +73,8 @@ echo "OK"
 
 git tag -l
 
+git ls-remote --refs --tags
+
 
 if [ $(git tag -l "${VERSION}") ]; then
     echo "Version ${VERSION} exists"
