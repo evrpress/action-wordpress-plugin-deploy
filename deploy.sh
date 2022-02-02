@@ -54,9 +54,9 @@ echo "ℹ︎ VERSION is $VERSION"
 # Check if current version exists as tag
 
 if [ $(git tag -l "$VERSION") ]; then
-    echo yes
+    echo "yes"
 else
-    echo no
+    echo "no"
 fi
 
 ls -a
