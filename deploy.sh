@@ -71,6 +71,9 @@ fi
 
 echo "OK"
 
+git tag -l
+
+
 if [ $(git tag -l "${VERSION}") ]; then
     echo "Version ${VERSION} exists"
 else
