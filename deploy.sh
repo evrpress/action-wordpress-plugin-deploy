@@ -130,6 +130,8 @@ else
 	echo "ℹ︎ No assets directory found; skipping asset copy"
 fi
 
+ls -a /home/runner/svn-mailster-repermission
+
 exit
 
 
