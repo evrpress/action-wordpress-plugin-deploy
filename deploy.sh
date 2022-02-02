@@ -13,6 +13,8 @@ echo "Hello my Friend!"
 # so do not echo or use debug mode unless you want your secrets exposed!
 if [[ -z "$SVN_USERNAME" ]]; then
 	echo "Set the SVN_USERNAME secret"
+	SVN_USERNAME=`grep  "^Contributors:[^\s]*" readme.txt | awk '$1=="Contributors:"{print $2}' | tr -d ','`
+	echo "USER IS $SVN_USERNAME"
 	exit 1
 fi
 
