@@ -52,6 +52,8 @@ fi
 echo "ℹ︎ VERSION is $VERSION"
 
 
+ls -a
+
 exit 1
 
 if [[ -z "$ASSETS_DIR" ]]; then
