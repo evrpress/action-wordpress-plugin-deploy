@@ -55,10 +55,11 @@ git status
 
 # Check if current version exists as tag
 
-if [ $(git tag -l "$VERSION") ]; then
+if [ $(git tag -l "${VERSION}") ]; then
     echo "yes"
 else
     echo "no"
+    git tag -fa "${VERSION}" -m "added tag for ${VERSION}"
 fi
 
 VERSION="1.7.1"
