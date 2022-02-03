@@ -6,7 +6,6 @@
 # it does not exit with a 0, and I only care about the final exit.
 set -eo
 
-echo "Hello my Friend!"
 # Ensure SVN username and password are set
 # IMPORTANT: while secrets are encrypted and not viewable in the GitHub UI,
 # they are by necessity provided as plaintext in the context of the Action,
@@ -166,10 +165,6 @@ if test -d "$SVN_DIR/assets" && test -n "$(find "$SVN_DIR/assets" -maxdepth 1 -n
 fi
 
 svn status
-
-ls -a /home/runner/svn-mailster-repermission
-
-
 
 echo "➤ Committing files..."
 svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
