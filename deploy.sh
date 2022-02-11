@@ -10,9 +10,12 @@ set -eo
 # IMPORTANT: while secrets are encrypted and not viewable in the GitHub UI,
 # they are by necessity provided as plaintext in the context of the Action,
 # so do not echo or use debug mode unless you want your secrets exposed!
+if [[ -z "$README_NAME" ]]; then
+	README_NAME="readme.txt"
+fi
 if [[ -z "$SVN_USERNAME" ]]; then
 	echo "Set the SVN_USERNAME secret"
-	SVN_USERNAME=`grep  "^Contributors:[^\s]*" readme.txt | awk '$1=="Contributors:"{print $2}' | tr -d ','`
+	SVN_USERNAME=`grep  "^Contributors:[^\s]*" $README_NAME | awk '$1=="Contributors:"{print $2}' | tr -d ','`
 fi
 
 if [[ -z "$SVN_USERNAME" ]]; then
@@ -35,14 +38,14 @@ echo "ℹ︎ SLUG is $SLUG"
 MAINFILE="$SLUG.php"
 
 # Check version in readme.txt is the same as plugin file
-NEWVERSION1=`grep "^Stable tag" readme.txt | awk -F' ' '{print $3}' | tr -d '\r'`
+NEWVERSION1=`grep "^Stable tag" $README_NAME | awk -F' ' '{print $3}' | tr -d '\r'`
 echo "ℹ︎ Readme version: $NEWVERSION1"
 NEWVERSION2=`grep "Version" $MAINFILE | awk -F' ' '{print $2}' | tr -d '\r\n('`
 if [ -z "$NEWVERSION2" ]; then
 	NEWVERSION2=`grep "Version" $MAINFILE | awk -F' ' '{print $3}' | tr -d '\r'`
 fi
 echo "ℹ︎ New Version: $NEWVERSION1"
-if [ "$NEWVERSION1" != "$NEWVERSION2" ]; then echo "Versions don't match $NEWVERSION1 != $NEWVERSION2. Exiting...."; sleep 5; exit 1; fi
+if [ "$NEWVERSION1" != "$NEWVERSION2" ]; then echo "Versions don't match $NEWVERSION1 != $NEWVERSION2. Exiting...."; exit 1; fi
 
 if [[ -z "$VERSION" ]]; then
 	VERSION=$NEWVERSION1
