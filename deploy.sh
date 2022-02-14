@@ -11,7 +11,7 @@ set -eo
 # they are by necessity provided as plaintext in the context of the Action,
 # so do not echo or use debug mode unless you want your secrets exposed!
 if [[ -z "$README_NAME" ]]; then
-	README_NAME="readme.txt"
+	README_NAME="README.md"
 fi
 if [[ -z "$SVN_USERNAME" ]]; then
 	echo "Set the SVN_USERNAME secret"
