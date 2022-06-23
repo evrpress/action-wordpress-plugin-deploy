@@ -127,10 +127,14 @@ fi
 if [[ -d "$GITHUB_WORKSPACE/$ASSETS_DIR/" ]]; then
 
 	echo "➤ Preparing assets..."
-	convert -resize 1544x500 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png $GITHUB_WORKSPACE/$ASSETS_DIR/banner-1544x500.png
-	convert -resize 772x250 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png $GITHUB_WORKSPACE/$ASSETS_DIR/banner-772x250.png
-	convert -resize 256x256 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png $GITHUB_WORKSPACE/$ASSETS_DIR/icon-256x256.png
-	convert -resize 128x128 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png $GITHUB_WORKSPACE/$ASSETS_DIR/icon-128x128.png
+	if [[ $(svn status "${GITHUB_WORKSPACE}/${ASSETS_DIR}/banner.png") ]]; then
+		convert -resize 1544x500 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png $GITHUB_WORKSPACE/$ASSETS_DIR/banner-1544x500.png
+		convert -resize 772x250 $GITHUB_WORKSPACE/$ASSETS_DIR/banner.png $GITHUB_WORKSPACE/$ASSETS_DIR/banner-772x250.png
+	fi
+	if [[ $(svn status "${GITHUB_WORKSPACE}/${ASSETS_DIR}/icon.png") ]]; then
+		convert -resize 256x256 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png $GITHUB_WORKSPACE/$ASSETS_DIR/icon-256x256.png
+		convert -resize 128x128 $GITHUB_WORKSPACE/$ASSETS_DIR/icon.png $GITHUB_WORKSPACE/$ASSETS_DIR/icon-128x128.png
+	fi
 
 	rsync -rc "$GITHUB_WORKSPACE/$ASSETS_DIR/" assets/ --delete
 else
