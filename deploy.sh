@@ -71,6 +71,9 @@ if [[ -z "$ASSETS_DIR" ]]; then
 fi
 echo "ℹ︎ ASSETS_DIR is $ASSETS_DIR"
 
+ls
+echo "$GITHUB_WORKSPACE/package.json"
+
 if [ -f "$GITHUB_WORKSPACE/package.json" ]; then
 	if ! [ -d "$GITHUB_WORKSPACE/node_modules" ]; then
 		echo "Install Node Modules"
