@@ -71,6 +71,24 @@ if [[ -z "$ASSETS_DIR" ]]; then
 fi
 echo "ℹ︎ ASSETS_DIR is $ASSETS_DIR"
 
+if [ -f "$PLUGINFOLDER/package.json" ]; then
+	if ! [ -d "$PLUGINFOLDER/node_modules" ]; then
+		echo "Install Node Modules"
+		npm install --no-fund
+	fi
+	echo "Run Build process"
+	npm run build
+fi
+
+if [ -f "$PLUGINFOLDER/composer.json" ]; then
+	if ! [ -d "$PLUGINFOLDER/vendor" ]; then
+		echo "Install Composer packages"
+		composer install --no-dev --quiet
+	fi
+	echo "Run Composer Update"
+	composer update --no-dev --quiet
+fi
+
 SVN_URL="https://plugins.svn.wordpress.org/${SLUG}/"
 SVN_DIR="${HOME}/svn-${SLUG}"
 
