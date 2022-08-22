@@ -71,8 +71,8 @@ if [[ -z "$ASSETS_DIR" ]]; then
 fi
 echo "ℹ︎ ASSETS_DIR is $ASSETS_DIR"
 
-if [ -f "$PLUGINFOLDER/package.json" ]; then
-	if ! [ -d "$PLUGINFOLDER/node_modules" ]; then
+if [ -f "$GITHUB_WORKSPACE/package.json" ]; then
+	if ! [ -d "$GITHUB_WORKSPACE/node_modules" ]; then
 		echo "Install Node Modules"
 		npm install --no-fund
 	fi
@@ -80,8 +80,8 @@ if [ -f "$PLUGINFOLDER/package.json" ]; then
 	npm run build
 fi
 
-if [ -f "$PLUGINFOLDER/composer.json" ]; then
-	if ! [ -d "$PLUGINFOLDER/vendor" ]; then
+if [ -f "$GITHUB_WORKSPACE/composer.json" ]; then
+	if ! [ -d "$GITHUB_WORKSPACE/vendor" ]; then
 		echo "Install Composer packages"
 		composer install --no-dev --quiet
 	fi
